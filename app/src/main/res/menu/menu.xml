@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.dnfapi.MainActivity">
+    <item android:id="@+id/action_goTrade"
+        android:title="경매장 보기"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_goSearch"
+        android:title="아이템 검색하기"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/action_goLogout"
+        android:title="로그아웃 하기"
+        app:showAsAction="never"/>
+
+
+</menu>

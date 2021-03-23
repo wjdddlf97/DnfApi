@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">DnFApI</string>
+
+    <string-array name="server">
+        <item>안톤</item>
+        <item>바칼</item>
+        <item>카인</item>
+        <item>카시야스</item>
+        <item>디레지에</item>
+        <item>힐더</item>
+        <item>프레이</item>
+        <item>시로코</item>
+    </string-array>
+
+    <string-array name="reportType">
+        <item>부적절한 내용</item>
+        <item>반복되는 본문</item>
+        <item>성적인 컨텐츠</item>
+        <item>특정 사상이 포함</item>
+        <item>사회적 문제</item>
+        <item>욕설</item>
+        <item>사기</item>
+    </string-array>
+
+
+    <string-array name="gradeList">
+        <item>최상급</item>
+        <item>상급</item>
+        <item>중급</item>
+        <item>하급</item>
+        <item>최하급</item>
+    </string-array>
+</resources>
