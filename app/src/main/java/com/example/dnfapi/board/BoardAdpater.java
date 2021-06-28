@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.FirebaseFunction;
 import com.example.dnfapi.function.VOS.ApiForm;

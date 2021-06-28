@@ -1,8 +1,7 @@
-package com.example.dnfapi;
+package com.example.dnfapi.aboutCharacter;
 
 import android.content.Context;
 import android.os.Build;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.FirebaseFunction;
 import com.example.dnfapi.function.VOS.ApiForm;

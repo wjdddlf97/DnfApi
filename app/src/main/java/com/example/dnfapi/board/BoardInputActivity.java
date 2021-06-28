@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.FirebaseFunction;
 
 public class BoardInputActivity extends AppCompatActivity {

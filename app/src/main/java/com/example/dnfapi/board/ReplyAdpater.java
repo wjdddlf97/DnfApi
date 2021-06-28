@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import android.app.Activity;
 import android.content.Context;

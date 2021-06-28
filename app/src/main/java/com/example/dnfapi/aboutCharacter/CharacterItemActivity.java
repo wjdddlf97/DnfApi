@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.aboutCharacter;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,6 +20,7 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.VOS.ApiItemForm;
 import com.example.dnfapi.function.VOS.ApiSetItemForm;

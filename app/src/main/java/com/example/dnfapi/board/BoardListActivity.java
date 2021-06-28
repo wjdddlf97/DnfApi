@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -11,8 +11,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.dnfapi.MainActivity;
+import com.example.dnfapi.MainBoardActivity;
+import com.example.dnfapi.R;
+import com.example.dnfapi.board.BoardAdpater;
+import com.example.dnfapi.board.BoardInfoActivity;
+import com.example.dnfapi.board.BoardInputActivity;
 import com.example.dnfapi.function.VOS.BoardListView;
-import com.example.dnfapi.function.VOS.CharacterListView;
 import com.example.dnfapi.function.FirebaseFunction;
 
 import java.util.ArrayList;
@@ -45,6 +50,7 @@ public class BoardListActivity extends AppCompatActivity {
 
 
         findViewById(R.id.boardPlusBtn).setOnClickListener(onClickListener);
+        findViewById(R.id.test).setOnClickListener(onClickListener);
     }
 
     View.OnClickListener onClickListener = new View.OnClickListener() {
@@ -53,6 +59,9 @@ public class BoardListActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.boardPlusBtn:
                     startBoardInputActivity();
+                    break;
+                case R.id.test:
+                    startTestActivity();
                     break;
 
             }
@@ -103,7 +112,6 @@ public class BoardListActivity extends AppCompatActivity {
             if(result.size() > 0) {
                 for (int i = 0; i < result.size(); i++) {
                     boardAdpater.addItem(result.get(i).getTitle(), result.get(i).getWriter(),result.get(i).getWriteDate(), result.get(i).getWriterId());
-
                 }
             }else{
                 boardAdpater.addItem("현재 게시글이 없습니다", " ", " ", " ");
@@ -116,6 +124,11 @@ public class BoardListActivity extends AppCompatActivity {
 
     private void startBoardInputActivity() {
         Intent intent = new Intent(this, BoardInputActivity.class);
+        startActivity(intent);
+    }
+
+    private void startTestActivity() {
+        Intent intent = new Intent(this, MainBoardActivity.class);
         startActivity(intent);
     }
 }

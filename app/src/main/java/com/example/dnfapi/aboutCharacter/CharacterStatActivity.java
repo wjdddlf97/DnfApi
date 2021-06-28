@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.aboutCharacter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.VOS.ApiStatForm;
 
@@ -128,17 +129,17 @@ public class CharacterStatActivity extends AppCompatActivity {
                     characterMagicCritical.setText(response.body().status.get(11).getValue());
                     characterIndependentAttack.setText(response.body().status.get(12).getValue());
                     characterCastSpeed.setText(response.body().status.get(14).getValue());
-                    characterHangMa.setText(response.body().status.get(16).getValue());
-                    characterHitRate.setText(response.body().status.get(17).getValue());
+                    //characterHangMa.setText(response.body().status.get(16).getValue()); // 사라진 능력치
+                    characterHitRate.setText(response.body().status.get(16).getValue());
 
-                    characterFirePower.setText(response.body().status.get(23).getValue());
-                    characterFireResistance.setText(response.body().status.get(24).getValue());
-                    characterWaterPower.setText(response.body().status.get(25).getValue());
-                    characterWaterResistance.setText(response.body().status.get(26).getValue());
-                    characterLightPower.setText(response.body().status.get(27).getValue());
-                    characterLightResistance.setText(response.body().status.get(28).getValue());
-                    characterDarkPower.setText(response.body().status.get(29).getValue());
-                    characterDarkResistance.setText(response.body().status.get(30).getValue());
+                    characterFirePower.setText(response.body().status.get(22).getValue());
+                    characterFireResistance.setText(response.body().status.get(23).getValue());
+                    characterWaterPower.setText(response.body().status.get(24).getValue());
+                    characterWaterResistance.setText(response.body().status.get(25).getValue());
+                    characterLightPower.setText(response.body().status.get(26).getValue());
+                    characterLightResistance.setText(response.body().status.get(27).getValue());
+                    characterDarkPower.setText(response.body().status.get(28).getValue());
+                    characterDarkResistance.setText(response.body().status.get(29).getValue());
                 }else{
 
                 }

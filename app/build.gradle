@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.dnfapi"
-        minSdkVersion 16
+        minSdkVersion 17
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -60,4 +60,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage'
     implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
     implementation 'androidx.viewpager2:viewpager2:1.0.0-alpha04'
+    implementation 'com.google.firebase:firebase-database'
+    implementation 'com.firebaseui:firebase-ui-storage:6.4.0'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    // For control over item selection of both touch and mouse driven selection
+    implementation "androidx.recyclerview:recyclerview-selection:1.1.0"
 }

@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 
+import com.example.dnfapi.MainActivity;
+import com.example.dnfapi.R;
+import com.example.dnfapi.register.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -110,7 +113,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     //안드로이드 백버튼 막기
     public void onBackPressed() {
-        Intent intent = new Intent(this,LoginActivity.class);
+        Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
         finish();
     }

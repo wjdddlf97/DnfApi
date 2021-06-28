@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +8,6 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -22,8 +20,8 @@ import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.FirebaseFunction;
-import com.example.dnfapi.function.VOS.BoardListView;
 import com.example.dnfapi.function.VOS.ReplyFormVO;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -36,6 +34,8 @@ public class BoardInfoActivity extends AppCompatActivity {
 
     FirebaseFunction firebaseFunction = new FirebaseFunction();
     SwipeRefreshLayout swipeRefreshLayout;
+
+
 
     TextView boardTitle;
     TextView boardContent;
@@ -87,6 +87,8 @@ public class BoardInfoActivity extends AppCompatActivity {
 
         findViewById(R.id.replyInputButton).setOnClickListener(onClickListener);
         findViewById(R.id.boardReport).setOnClickListener(onClickListener);
+
+
 
     }
 

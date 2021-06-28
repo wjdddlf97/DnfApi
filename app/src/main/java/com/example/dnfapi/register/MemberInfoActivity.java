@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.register;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -22,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.dnfapi.MainActivity;
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.FirebaseFunction;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;

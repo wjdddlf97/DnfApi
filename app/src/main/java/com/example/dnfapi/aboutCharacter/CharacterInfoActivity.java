@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.aboutCharacter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -8,13 +8,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.VOS.ApiStatForm;
 import com.example.dnfapi.function.VOS.CharacterDetailListVO;

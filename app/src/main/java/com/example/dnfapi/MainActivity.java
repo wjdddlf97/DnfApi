@@ -19,7 +19,6 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,11 +37,20 @@ import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 
+import com.example.dnfapi.Chat.Report_adminActivity;
+import com.example.dnfapi.Chat.Report_customerActivity;
+import com.example.dnfapi.aboutCharacter.CharacterInfoActivity;
+import com.example.dnfapi.aboutCharacter.CharacterListAdapter;
+import com.example.dnfapi.board.BoardAdpater;
+import com.example.dnfapi.board.BoardInfoActivity;
+import com.example.dnfapi.board.BoardListActivity;
 import com.example.dnfapi.function.VOS.ApiForm;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.VOS.BoardListView;
 import com.example.dnfapi.function.VOS.CharacterListView;
 import com.example.dnfapi.function.FirebaseFunction;
+import com.example.dnfapi.register.LoginActivity;
+import com.example.dnfapi.register.MemberInfoActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -52,13 +60,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 
-import java.net.URI;
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Function;
 
 
 //import cn.trinea.android.view.autoscrollviewpager.AutoScrollViewPager;
@@ -91,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     CardView autoEventCardView;
     ArrayList<String> data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+    public String userName = "";
     @SuppressLint("NewApi")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -159,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
                                 if(result != null) {
                                     navUserContent.setText(result.get(0).getSubTitle());
                                     navUserName.setText(result.get(0).getMemberName());
-
+                                    userName = result.get(0).getMemberName();
                                     firebaseFunction.profileImageDownload(navImgView);
                                 }
                                 return null;
@@ -179,7 +183,9 @@ public class MainActivity extends AppCompatActivity {
                                         Toast.makeText(MainActivity.this, title + ": 설정 정보를 확인합니다.", Toast.LENGTH_SHORT).show();
                                         startBoardListActivity();
                                     }
-                                    else if(id == R.id.logout){
+                                    else if(id == R.id.report){
+                                        startReportActivity();
+                                    }else if(id == R.id.logout){
                                         Logout();
                                     }
                                     return true;
@@ -640,11 +646,21 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);
     }
-
-
-
     private void startBoardListActivity() {
         Intent intent = new Intent(this, BoardListActivity.class);
         startActivity(intent);
     }
+    private void startReportActivity() {
+        if(user.getUid().equals(firebaseFunction.getAdministerId())){
+            Intent intent = new Intent(this, Report_adminActivity.class);
+            startActivity(intent);
+        }else{
+            firebaseFunction.insertDirectReportInfo(userName,user.getUid(),"0");
+            Intent intent = new Intent(this, Report_customerActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
+
 }

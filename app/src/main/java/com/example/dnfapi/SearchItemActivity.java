@@ -297,6 +297,8 @@ public class SearchItemActivity extends AppCompatActivity {
         ApiInterface service1 = retrofit.create(ApiInterface.class);
         Call<ItemInfo> call = service1.getItemDetailInfo(ItemId);
 
+
+
         call.enqueue(new Callback<ItemInfo>() {
             @Override
             public void onResponse( Call<ItemInfo> call, Response<ItemInfo> response) {
