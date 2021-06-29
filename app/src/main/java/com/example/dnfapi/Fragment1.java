@@ -65,7 +65,7 @@ public class Fragment1 extends Fragment {
     public void InitializeBoardData()
     {
         boardList = new ArrayList<BoardListView>();
-        firebaseFunction.getBoardList((result)->{
+        firebaseFunction.getBoardList("free",(result)->{
             ListView listView = (ListView)view.findViewById(R.id.board_item_view);
             final BoardAdpater boardAdpater = new BoardAdpater(getActivity(),boardList);
             listView.setAdapter(boardAdpater);

@@ -39,7 +39,6 @@ public class Fragment2 extends Fragment {
 
         swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
 
-        Log.d("2","2실행");
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -64,7 +63,7 @@ public class Fragment2 extends Fragment {
     public void InitializeBoardData()
     {
         boardList = new ArrayList<BoardListView>();
-        firebaseFunction.getBoardList((result)->{
+        firebaseFunction.getBoardList("ask",(result)->{
             ListView listView = (ListView)view.findViewById(R.id.board_item_view);
             final BoardAdpater boardAdpater = new BoardAdpater(getActivity(),boardList);
             listView.setAdapter(boardAdpater);

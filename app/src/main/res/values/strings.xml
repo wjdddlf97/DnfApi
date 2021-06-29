@@ -30,4 +30,21 @@
         <item>하급</item>
         <item>최하급</item>
     </string-array>
+
+    <string-array name="classType">
+        <item>귀검사(남)</item>
+        <item>귀검사(여)</item>
+        <item>격투가(남)</item>
+        <item>격투가(여)</item>
+        <item>거너(남)</item>
+        <item>거너(여)</item>
+        <item>마법사(남)</item>
+        <item>마법사(여)</item>
+        <item>도적</item>
+        <item>총검사</item>
+        <item>마창사</item>
+        <item>나이트</item>
+        <item>크리에이터</item>
+        <item>다크나이트</item>
+    </string-array>
 </resources>

@@ -7,13 +7,27 @@ public class BoardFormVO {
     public String writeDate;
     public String writer;
     public String writerId;
+    public String type;
+    public String classType;
 
-    public BoardFormVO(String title, String boardContent, String writeDate, String writer, String writerId) {
+    public BoardFormVO(String title, String boardContent, String writeDate, String writer, String writerId,String type) {
         this.title = title;
         this.boardContent = boardContent;
         this.writeDate = writeDate;
         this.writer = writer;
         this.writerId = writerId;
+        this.type = type;
+        this.classType = "";
+    }
+
+    public BoardFormVO(String title, String boardContent, String writeDate, String writer, String writerId,String type, String classType) {
+        this.title = title;
+        this.boardContent = boardContent;
+        this.writeDate = writeDate;
+        this.writer = writer;
+        this.writerId = writerId;
+        this.type = type;
+        this.classType = classType;
     }
 
     public String getTitle() {
@@ -54,5 +68,13 @@ public class BoardFormVO {
 
     public void setWriterId(String writerId) {
         this.writerId = writerId;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 }

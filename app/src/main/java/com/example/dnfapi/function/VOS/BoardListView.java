@@ -5,6 +5,7 @@ public class BoardListView {
     public String boardWriter;
     public String writeDate;
     public String boardWriterId;
+    public String boardType;
 
     public String getBoardWriterId() {
         return boardWriterId;
@@ -36,5 +37,13 @@ public class BoardListView {
 
     public void setWriteDate(String writeDate) {
         this.writeDate = writeDate;
+    }
+
+    public String getBoardType() {
+        return boardType;
+    }
+
+    public void setBoardType(String boardType) {
+        this.boardType = boardType;
     }
 }

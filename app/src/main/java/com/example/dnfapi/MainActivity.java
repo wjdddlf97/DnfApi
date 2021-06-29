@@ -43,6 +43,7 @@ import com.example.dnfapi.aboutCharacter.CharacterInfoActivity;
 import com.example.dnfapi.aboutCharacter.CharacterListAdapter;
 import com.example.dnfapi.board.BoardAdpater;
 import com.example.dnfapi.board.BoardInfoActivity;
+import com.example.dnfapi.board.BoardLimitAdpater;
 import com.example.dnfapi.board.BoardListActivity;
 import com.example.dnfapi.function.VOS.ApiForm;
 import com.example.dnfapi.function.ApiInterface;
@@ -349,7 +350,7 @@ public class MainActivity extends AppCompatActivity {
         boardList = new ArrayList<BoardListView>();
         firebaseFunction.getBoardListLimit((result)->{
             ListView listView = (ListView)findViewById(R.id.board_thumb_view);
-            final BoardAdpater boardAdpater = new BoardAdpater(this,boardList);
+            final BoardLimitAdpater boardAdpater = new BoardLimitAdpater(this,boardList);
             listView.setAdapter(boardAdpater);
 
 
@@ -366,11 +367,11 @@ public class MainActivity extends AppCompatActivity {
 
             if(result.size() > 0) {
                 for (int i = 0; i < result.size(); i++) {
-                    boardAdpater.addItem(result.get(i).getTitle(), result.get(i).getWriter(),result.get(i).getWriteDate(), result.get(i).getWriterId());
+                    boardAdpater.addItem(result.get(i).getTitle(), result.get(i).getWriter(),result.get(i).getWriteDate(), result.get(i).getWriterId(), result.get(i).getType());
 
                 }
             }else{
-                boardAdpater.addItem("현재 게시글이 없습니다", " ", " ", " ");
+                boardAdpater.addItem("현재 게시글이 없습니다", " ", " ", " ", " ");
             }
             boardAdpater.notifyDataSetChanged();
             return null;
@@ -647,7 +648,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     private void startBoardListActivity() {
-        Intent intent = new Intent(this, BoardListActivity.class);
+        Intent intent = new Intent(this, MainBoardActivity.class);
         startActivity(intent);
     }
     private void startReportActivity() {

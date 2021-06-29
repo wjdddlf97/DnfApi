@@ -20,6 +20,7 @@ public class MainBoardActivity extends AppCompatActivity {
     Button board3ChangeButton;
     Button boardPlusBtn;
 
+    String type = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +31,7 @@ public class MainBoardActivity extends AppCompatActivity {
         board3ChangeButton = findViewById(R.id.board3ChangeButton);
         boardPlusBtn = findViewById(R.id.boardPlusBtn);
 
+        type = "free";
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.frameLayout, Fragment1.newInstance()).commit();
 
@@ -40,7 +42,7 @@ public class MainBoardActivity extends AppCompatActivity {
                 //fragmentTransaction.add(R.id.frameLayout, Fragment1.newInstance()).commit();
 
                 replaceFragment(Fragment1.newInstance());
-
+                type = "free";
 
             }
         });
@@ -52,7 +54,7 @@ public class MainBoardActivity extends AppCompatActivity {
                 //fragmentTransaction.add(R.id.frameLayout, Fragment2.newInstance()).commit();
 
                 replaceFragment(Fragment2.newInstance());
-                Log.d("2","2실행");
+                type = "ask";
             }
         });
 
@@ -63,7 +65,7 @@ public class MainBoardActivity extends AppCompatActivity {
                 //fragmentTransaction.add(R.id.frameLayout, Fragment2.newInstance()).commit();
 
                 replaceFragment(Fragment3.newInstance());
-                Log.d("e","3실행");
+                type = "class";
             }
         });
 
@@ -83,6 +85,7 @@ public class MainBoardActivity extends AppCompatActivity {
 
     private void startBoardInputActivity() {
         Intent intent = new Intent(this, BoardInputActivity.class);
+        intent.putExtra("type",type);
         startActivity(intent);
     }
 

@@ -83,7 +83,7 @@ public class FirebaseFunction {
                 });
     }
 
-    public static void insertBoardInfo( String title, String boardContent, String writer){
+    public static void insertBoardInfo( String title, String boardContent, String writer, String type){
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -93,8 +93,33 @@ public class FirebaseFunction {
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String formatDate = sdfNow.format(dateNow);
 
-        BoardFormVO boardFormVO = new BoardFormVO(title, boardContent, formatDate,writer,user.getUid());
-        db.collection("boards/").document(title).set(boardFormVO)
+        BoardFormVO boardFormVO = new BoardFormVO(title, boardContent, formatDate,writer,user.getUid(), type);
+        db.collection("boards/").document(title+formatDate).set(boardFormVO)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void avoid) {
+                        insertBoardLogInfo("게시글 입력",title, boardContent, formatDate);
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                    }
+                });
+    }
+
+    public static void insertClassBoardInfo( String title, String boardContent, String writer, String type,String classType){
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+
+        long now = System.currentTimeMillis();
+        Date dateNow = new Date(now);
+        SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String formatDate = sdfNow.format(dateNow);
+
+        BoardFormVO boardFormVO = new BoardFormVO(title, boardContent, formatDate,writer,user.getUid(), type, classType);
+        db.collection("boards/").document(title+formatDate).set(boardFormVO)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void avoid) {
@@ -163,7 +188,7 @@ public class FirebaseFunction {
                 });
     }
 
-    public static void getBoardList(Function<List<BoardFormVO>, Void> complete){
+    public static void getBoardList(String type,Function<List<BoardFormVO>, Void> complete){
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
         final ArrayList<Map<String, Object>> boardSaveInit = new ArrayList<Map<String, Object>>();
@@ -171,6 +196,7 @@ public class FirebaseFunction {
 
         db.collection("boards/")
                 .orderBy("writeDate", Query.Direction.DESCENDING)
+                .whereEqualTo("type", type)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -187,7 +213,47 @@ public class FirebaseFunction {
                                         (String) boardSaveInit.get(i).get("boardContent"),
                                         (String) boardSaveInit.get(i).get("writeDate"),
                                         (String) boardSaveInit.get(i).get("writer"),
-                                        (String) boardSaveInit.get(i).get("writerId"));
+                                        (String) boardSaveInit.get(i).get("writerId"),
+                                        (String) boardSaveInit.get(i).get("type"));
+                                boardList.add(bookSaveFormProto);
+                            }
+                            complete.apply(boardList);
+
+                        } else {
+
+                        }
+                    }
+                });
+
+    }
+
+    public static void getClassBoardList(String classType,Function<List<BoardFormVO>, Void> complete){
+        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        final FirebaseFirestore db = FirebaseFirestore.getInstance();
+        final ArrayList<Map<String, Object>> boardSaveInit = new ArrayList<Map<String, Object>>();
+        final List<BoardFormVO> boardList = new ArrayList<>();
+
+        db.collection("boards/")
+                .orderBy("writeDate", Query.Direction.DESCENDING)
+                .whereEqualTo("classType", classType)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @RequiresApi(api = Build.VERSION_CODES.N)
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                boardSaveInit.add(document.getData());
+                            }
+                            for (int i=0;i<boardSaveInit.size();i++) {
+                                BoardFormVO bookSaveFormProto = new BoardFormVO(
+                                        (String)boardSaveInit.get(i).get("title"),
+                                        (String) boardSaveInit.get(i).get("boardContent"),
+                                        (String) boardSaveInit.get(i).get("writeDate"),
+                                        (String) boardSaveInit.get(i).get("writer"),
+                                        (String) boardSaveInit.get(i).get("writerId"),
+                                        (String) boardSaveInit.get(i).get("type"),
+                                        (String) boardSaveInit.get(i).get("classType"));
                                 boardList.add(bookSaveFormProto);
                             }
                             complete.apply(boardList);
@@ -224,7 +290,8 @@ public class FirebaseFunction {
                                         (String) boardSaveInit.get(i).get("boardContent"),
                                         (String) boardSaveInit.get(i).get("writeDate"),
                                         (String) boardSaveInit.get(i).get("writer"),
-                                        (String) boardSaveInit.get(i).get("writerId"));
+                                        (String) boardSaveInit.get(i).get("writerId"),
+                                        (String) boardSaveInit.get(i).get("type"));
                                 boardList.add(bookSaveFormProto);
                             }
                             complete.apply(boardList);
@@ -297,7 +364,8 @@ public class FirebaseFunction {
                                         (String) boardSaveInit.get(i).get("boardContent"),
                                         (String) boardSaveInit.get(i).get("writeDate"),
                                         (String) boardSaveInit.get(i).get("writer"),
-                                        (String) boardSaveInit.get(i).get("writerId"));
+                                        (String) boardSaveInit.get(i).get("writerId"),
+                                        (String) boardSaveInit.get(i).get("type"));
                                 boardList.add(bookSaveFormProto);
                             }
                             complete.apply(boardList);

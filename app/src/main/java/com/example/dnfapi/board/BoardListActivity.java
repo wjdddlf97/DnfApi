@@ -92,7 +92,7 @@ public class BoardListActivity extends AppCompatActivity {
     public void InitializeBoardData()
     {
         boardList = new ArrayList<BoardListView>();
-        firebaseFunction.getBoardList((result)->{
+        firebaseFunction.getBoardList("",(result)->{
             ListView listView = (ListView)findViewById(R.id.board_item_view);
             final BoardAdpater boardAdpater = new BoardAdpater(this,boardList);
             listView.setAdapter(boardAdpater);
