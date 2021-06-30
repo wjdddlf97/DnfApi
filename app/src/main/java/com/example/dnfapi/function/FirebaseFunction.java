@@ -93,8 +93,9 @@ public class FirebaseFunction {
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String formatDate = sdfNow.format(dateNow);
 
+
         BoardFormVO boardFormVO = new BoardFormVO(title, boardContent, formatDate,writer,user.getUid(), type);
-        db.collection("boards/").document(title+formatDate).set(boardFormVO)
+        db.collection("boards/").document(title+user.getUid()).set(boardFormVO)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void avoid) {
@@ -119,7 +120,7 @@ public class FirebaseFunction {
         String formatDate = sdfNow.format(dateNow);
 
         BoardFormVO boardFormVO = new BoardFormVO(title, boardContent, formatDate,writer,user.getUid(), type, classType);
-        db.collection("boards/").document(title+formatDate).set(boardFormVO)
+        db.collection("boards/").document(title+user.getUid()).set(boardFormVO)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void avoid) {
@@ -406,7 +407,7 @@ public class FirebaseFunction {
 
 
 
-    public static void delBoard(String title, String boardContent){
+    public static void delBoard(String title, String boardContent,String writerId){
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -415,23 +416,24 @@ public class FirebaseFunction {
         SimpleDateFormat sdfNow = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
         String formatDate = sdfNow.format(dateNow);
 
+        Log.d("deltest",title+writerId);
+        if(user.getUid().equals(writerId) || user.getUid().equals(getAdministerId())) {
+            db.collection("boards/").document(title + writerId)
+                    .delete()
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            insertBoardLogInfo("게시글 삭제", title, boardContent, formatDate);
+                            delAllReply(title);
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
 
-
-        db.collection("boards/").document(title)
-                .delete()
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        insertBoardLogInfo("게시글 삭제",title, boardContent, formatDate);
-                        delAllReply(title);
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                    }
-                });
+                        }
+                    });
+        }
     }
 
 

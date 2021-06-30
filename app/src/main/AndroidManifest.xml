@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DnFApI"
         android:usesCleartextTraffic="true">
-        <activity android:name=".MainBoardActivity"></activity>
+        <activity android:name=".board.MainBoardActivity"></activity>
         <activity android:name=".Chat.Report_adminDetailActivity" />
         <activity android:name=".Chat.Report_adminActivity" />
         <activity android:name=".Chat.Report_customerActivity" />

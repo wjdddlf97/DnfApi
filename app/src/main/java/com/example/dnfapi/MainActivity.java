@@ -41,10 +41,9 @@ import com.example.dnfapi.Chat.Report_adminActivity;
 import com.example.dnfapi.Chat.Report_customerActivity;
 import com.example.dnfapi.aboutCharacter.CharacterInfoActivity;
 import com.example.dnfapi.aboutCharacter.CharacterListAdapter;
-import com.example.dnfapi.board.BoardAdpater;
 import com.example.dnfapi.board.BoardInfoActivity;
 import com.example.dnfapi.board.BoardLimitAdpater;
-import com.example.dnfapi.board.BoardListActivity;
+import com.example.dnfapi.board.MainBoardActivity;
 import com.example.dnfapi.function.VOS.ApiForm;
 import com.example.dnfapi.function.ApiInterface;
 import com.example.dnfapi.function.VOS.BoardListView;
@@ -96,14 +95,19 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<String> data = new ArrayList<>();
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     public String userName = "";
+    public String loadingCheck = "0";
     @SuppressLint("NewApi")
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent intent = new Intent(this, LoadingActivity.class);
-        startActivity(intent);
+        if(loadingCheck.equals("0")) {
+            loadingCheck = "1";
+            Intent intent = new Intent(this, LoadingActivity.class);
+            startActivity(intent);
+        }
+
         home_my_character_recycler_view=findViewById(R.id.home_my_character_recycler_view);
         home_my_character_card_view_more_button=findViewById(R.id.home_my_character_card_view_more_button);
 

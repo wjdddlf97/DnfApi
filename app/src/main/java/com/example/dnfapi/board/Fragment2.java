@@ -1,8 +1,7 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,8 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import com.example.dnfapi.board.BoardAdpater;
-import com.example.dnfapi.board.BoardInfoActivity;
+import com.example.dnfapi.R;
 import com.example.dnfapi.function.FirebaseFunction;
 import com.example.dnfapi.function.VOS.BoardListView;
 

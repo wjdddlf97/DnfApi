@@ -125,6 +125,7 @@ public class Report_adminDetailActivity extends AppCompatActivity {
                         chat.setMsg(msg);
                         myRef.push().setValue(chat);
                     }
+                    EditText_chat.setText("");
                     break;
                 case R.id.endReportButton:
                     FirebaseFunction.updateIsEnd(userId);

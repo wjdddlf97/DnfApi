@@ -1,4 +1,4 @@
-package com.example.dnfapi.function;
+package com.example.dnfapi.function.VOS;
 
 import com.google.gson.annotations.SerializedName;
 

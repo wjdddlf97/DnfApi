@@ -1,4 +1,4 @@
-package com.example.dnfapi;
+package com.example.dnfapi.board;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,11 +7,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.dnfapi.board.BoardInputActivity;
+import com.example.dnfapi.R;
 
 public class MainBoardActivity extends AppCompatActivity {
 

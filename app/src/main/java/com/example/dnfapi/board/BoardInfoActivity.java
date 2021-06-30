@@ -241,7 +241,7 @@ public class BoardInfoActivity extends AppCompatActivity {
                 break;
             case R.id.goDeleteBoard:
                 if(writerId.equals(user.getUid()) || user.getUid().equals(firebaseFunction.getAdministerId())) {
-                    firebaseFunction.delBoard(boardTitle.getText().toString(), boardContent.getText().toString());
+                    firebaseFunction.delBoard(boardTitle.getText().toString(), boardContent.getText().toString(),writerId);
                     finish();
                 }else{
 

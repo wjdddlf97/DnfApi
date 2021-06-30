@@ -11,12 +11,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.dnfapi.MainActivity;
-import com.example.dnfapi.MainBoardActivity;
 import com.example.dnfapi.R;
-import com.example.dnfapi.board.BoardAdpater;
-import com.example.dnfapi.board.BoardInfoActivity;
-import com.example.dnfapi.board.BoardInputActivity;
 import com.example.dnfapi.function.VOS.BoardListView;
 import com.example.dnfapi.function.FirebaseFunction;
 
